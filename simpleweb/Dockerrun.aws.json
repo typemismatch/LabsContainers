@@ -1,0 +1,37 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+       "name": "docker_sock",
+       "host": {
+            "sourcePath": "/var/run/docker.sock"
+      }
+    },
+    {
+       "name": "proc",
+       "host": {
+            "sourcePath": "/proc/"
+      }
+    },
+    {
+       "name": "cgroup",
+       "host": {
+            "sourcePath": "/cgroup/"
+      }
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "dnx-app",
+      "image": "craigw9292/aspnet_hello",
+      "essential": true,
+      "memory": 256,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 5004
+        }
+      ]
+    }
+  ]
+}
